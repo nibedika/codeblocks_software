@@ -1,0 +1,12 @@
+#include<stdio.h>
+
+int main()
+{
+    float c, f;
+    printf("Enter the temparature in Fahrenheit : ");
+    scanf("%f", &f);
+    c = (f - 32) * (5.0/9.0); // ফারেনহাইট থেকে সেলসিয়াসে রূপান্তরের সূত্র
+    printf("\nTemperature in Celsius = %f ", c);
+    return 0;
+}
+
