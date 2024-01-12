@@ -50,11 +50,11 @@ void update_student()
     // রোল ইনপুট নেওয়া
 	printf("Enter Roll Number: ");
 	long int x;
-	scanf("%ld", &x);
+	scanf("%d", &x);
 
 	for (int j = 0; j < x; j++) {
         // রোলটি কোন শিক্ষার্থীর তা মিলানো
-	    if (st[j].roll == x) {
+	    if (x == st[j].roll) {
 
 	        // শিক্ষার্থীর যে তথ্য পরিবর্তন করতে হবে তা সিলেক্ট করা
             printf("1 = first name, 2 = last name, 3 = roll, 4 = GPA, 5 = subject\n");
@@ -95,13 +95,13 @@ void update_student()
 void delete_student()
 {
     // রোল ইনপুট নেওয়া
-	int a;
+	int x;
 	printf("Enter Roll Number: ");
-	scanf("%d", &a);
+	scanf("%d", &x);
 
 	// রোল অনুযায়ী তথ্য মুছে ফেলা
 	for (int j = 1; j <= i; j++) {
-		if (a == st[j].roll) {
+		if (x == st[j].roll) {
 			for (int k = j; k < 49; k++)
 				st[k] = st[k + 1];
 			i--;
@@ -134,19 +134,28 @@ void find_roll()
 	int x;
 	printf("Enter Roll Number: ");
 	scanf("%d", &x);
+	int found = 0;
 
-	for (int j = 1; j <= i; j++) {
+	for (int j = 0; j < i; j++) {
         // রোল এর সাথে মিলিয়ে শিক্ষার্থীর তথ্য প্রিন্ট করা
-		if (x == st[i].roll) {
-            student_details(i);
-		}
+		if (x == st[j].roll) {
+            student_details(j);
 
-        // শিক্ষার্থীর সাবজেক্ট কোডগুলো প্রিন্ট করা
-		for (int j = 0; j < 5; j++) {
-            printf("The subjects are: %d\n", st[i].sub_code[j]);
+            // শিক্ষার্থীর সাবজেক্ট কোডগুলো প্রিন্ট করা
+            for (int k = 0; k < 5; k++) {
+                printf("The subjects are: %d\n", st[j].sub_code[k]);
+            }
+
+            // তথ্য খুঁজে পেলে স্টেটাস পরিবর্তন করা
+            found = 1;
+            break;
 		}
-		break;
 	}
+
+    // তথ্য খুঁজে না পেলে মেসেজে প্রিন্ট করা
+	if (!found) {
+        printf("Student not found!\n");
+    }
 }
 
 // প্রথম নাম দ্বারা শিক্ষার্থীর তথ্য বার করা
@@ -156,69 +165,88 @@ void find_first_name()
 	char a[50];
 	printf("Enter First Name: ");
 	scanf("%s", a);
-	int c = 0;
+	int found = 0;
 
     // প্রথম নাম দ্বারা শিক্ষার্থী খোঁজা
-	for (int j = 1; j <= i; j++) {
+	for (int j = 0; j < i; j++) {
 		if (!strcmp(st[j].fname, a)) {
 
             // প্রথম নাম এর সাথে মিলিয়ে শিক্ষার্থীর তথ্য প্রিন্ট করা
-			student_details(i);
+			student_details(j);
 
             // শিক্ষার্থীর সাবজেক্ট কোডগুলো প্রিন্ট করা
-			for (int j = 0; j < 5; j++) {
-                printf("The subjects are: %d\n",
-					st[i].sub_code[j]);
+            for (int k = 0; k < 5; k++) {
+                printf("The subjects are: %d\n", st[j].sub_code[k]);
             }
+
+            // তথ্য খুঁজে পেলে স্টেটাস পরিবর্তন করা
+            found = 1;
             break;
-			c = 1;
 		}
-		else
-        {
-            printf("The student not found!\n");
-        }
 	}
+
+    // তথ্য খুঁজে না পেলে মেসেজে প্রিন্ট করা
+	if (!found) {
+        printf("Student not found!\n");
+    }
 }
 
 // বিষয় দ্বারা শিক্ষার্থীর তথ্য বার করা
 void find_subject()
 {
     // বিষয় ইনপুট নেওয়া
-	int id;
-	printf("Enter Subject Code: \n");
-	scanf("%d", &id);
-	int c = 0;
+	int c;
+	printf("Enter Subject Code: ");
+	scanf("%d", &c);
+	int found = 0;
 
     // বিষয় দ্বারা শিক্ষার্থী খোঁজা
-	for (int j = 1; j <= i; j++) {
-		for (int d = 0; d < 5; d++) {
-			if (id == st[j].sub_code[d]) {
+	for (int j = 0; j < i; j++) {
+		for (int k = 0; k < 5; k++) {
+			if (c == st[j].sub_code[k]) {
 
                 // বিষয় এর সাথে মিলিয়ে শিক্ষার্থীর তথ্য প্রিন্ট করা
-				student_details(i);
-				c = 1;
+				student_details(j);
+
+                // তথ্য খুঁজে পেলে স্টেটাস পরিবর্তন করা
+				found = 1;
 				break;
 			}
-			else
-            {
-                printf("The student not found!\n");
-            }
 		}
 	}
+
+    // তথ্য খুঁজে না পেলে মেসেজে প্রিন্ট করা
+	if (!found) {
+        printf("Student not found!\n");
+    }
 }
 
 // মেইন ফাংশন
 void main()
 {
-	int choice, count;
-	while(i = 1) {
+	int choice;
+
+	while(i < 100) {
         // প্রোগ্রামটি দ্বারা কি কাজ করবো তা সিলেক্ট করা
 		printf("1 = add, 2 = update, 3 = delete, 4 = count, 5 = roll, 6 = name, 7 = subject, 8 = quit\n");
 		printf("Enter Choice: ");
-		scanf("%d", &choice);
+		//scanf("%d", &choice);
+
+		// ইনপুটটি ইন্টিজার নেওয়া হয়েছে কিনা চেক করে ইনপুট নেওয়া
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input! Please enter a valid option.\n");
+            while (getchar() != '\n'); // ইনপুট ইন্টিজার না হলে ইনপুট ক্লিয়ার করে দেওয়া
+            continue;
+        }
+
+        // সঠিক অপসন সিলেক্ট না করলে আবার লুপ এর শুরুতে ফিরে যাওয়ার জন্য
+		if (choice < 1 || choice > 8) {
+            printf("Select correct option!\n");
+            continue;
+        }
 
         // সিলেক্ট করা কাজ অনুযায়ী ফাংশন নির্বাচন
-		switch(choice) {
+        switch(choice) {
             case 1:
                 add_student();
                 break;
@@ -243,7 +271,7 @@ void main()
             case 8:
                 exit(0);
                 break;
-		}
+        }
+
 	}
 }
-
