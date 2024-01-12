@@ -62,4 +62,4 @@ https://github.com/nibedika/olpo_kothai_c_program
 
 তারপর তোমাদের কম্পিউটার এ তৈরি হওয়া কোডব্লক এর আইকন এ ডাবল ক্লিক করলেই কোডব্লক চালু হয়ে যাবে আর তোমার নিচের মতো কোডব্লক সারফেস দেখতে পাবে।
 
-![Image Alt text](/readme-img/9.png)
+![Image Alt text](/readme-img/10.png)
