@@ -3,9 +3,11 @@
 
 int main()
 {
+	// ফাইল পয়েন্টার ডিফাইন এবং ফাইল ওপেন করা
 	FILE* fptr;
 	fptr = fopen("testfile.txt", "r");
 
+// ফাইল ওপেন হয়েছে কিনা তা চেক করা
 	if(fptr == NULL)
     {
         printf("File not found !");
@@ -13,12 +15,11 @@ int main()
     }
     else
     {
-        // কার্সর এর বর্তমান অবস্থান খোঁজা
-        fseek(fptr, 0, SEEK_CUR);
+        // ফাইল পয়েন্টার থানান্তর করা
+        fseek(fptr, 5, SEEK_CUR);
 
-        // কার্সর এর অবস্থান প্রিন্ট
+        // ফাইল পয়েন্টার-এর অবস্থান প্রিন্ট
         printf("%ld", ftell(fptr));
     }
 	return 0;
 }
-

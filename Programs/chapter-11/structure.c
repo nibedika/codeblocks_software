@@ -11,7 +11,7 @@ struct Student
     float mark;
     char grade[100];
 };
-struct Student S; // স্ট্রাকচার ইনস্ট্যান্স ডিফাইন
+struct Student S; /* স্ট্রাকচার ইনস্ট্যান্স ডিফাইন অর্থাৎ s নামের ভ্যারিয়েবলে আমরা Student স্ট্রাকচারে ডাটা রাখব এবং এক্সেস করবো সেটা প্রোগ্রামকে জানানো */
 
 int main()
 {
@@ -54,8 +54,6 @@ int main()
     }
 
     // শিক্ষার্থীর তথ্য  প্রিন্ট করা
-    printf("Result = \nName: %s\nClass: %s\nRoll: %d\nSubject: %s\nMark: %.2f\nGrade: %s",
-           S.name, S.class_no, S.roll, S.subject, S.mark, S.grade);
+    printf("Result = \nName: %s\nClass: %s\nRoll: %d\nSubject: %s\nMark: %.2f\nGrade: %s", S.name, S.class_no, S.roll, S.subject, S.mark, S.grade);
     return 0;
 }
-

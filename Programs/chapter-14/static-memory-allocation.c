@@ -13,8 +13,8 @@ void demoFunction() {
 }
 
 int main() {
+    // demoFunction() ফাংশনকে বারবার কল করে মানের পরিবর্তন দেখা
     demoFunction();
     demoFunction();
     return 0;
 }
-

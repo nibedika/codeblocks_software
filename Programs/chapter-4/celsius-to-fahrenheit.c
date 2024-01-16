@@ -2,11 +2,10 @@
 
 int main()
 {
-    float c, f;
-    printf("Enter the temparature in Celsius : ");
-    scanf("%f", &c);
-    f = (1.8 * c) + 32; // সেলসিয়াস থেকে ফারেনহাইটে  রূপান্তরের সূত্র
-    printf("\nTemperature in Fahrenheit = %f ", f);
+    float c, f; // দুটো খালি ভ্যারিয়েবল ডিক্লেয়ার করেছি আর বলেছি যে এগুলোতে ফ্লোট থাকবে
+    printf("Enter the temperature in Celsius : ");
+    scanf("%f", &c); // ইউজার যেই ইনপুট দিবে সেটাকে c ভ্যারিয়েবলে নিচ্ছি
+    f = (1.8 * c) + 32; /* সেলসিয়াস থেকে ফারেনহাইটে রূপান্তরের সূত্র, ইন্টারনেটে সার্চ করলে পাবে তোমরা */
+    printf("\nTemperature in Fahrenheit = %f ", f);/* এবার f ভ্যারিয়েবলের ভ্যালু প্রিন্ট করে শো করছি */
     return 0;
 }
-

@@ -6,6 +6,7 @@ int main()
 	FILE* fptr;
 	fptr = fopen("testfile.txt", "r");
 
+	// ফাইল ওপেন হয়েছে কিনা তা চেক করা
     if(fptr == NULL)
     {
         printf("File not found!");
@@ -13,9 +14,11 @@ int main()
     }
     else
     {
-        // কার্সরকে খোঁজে  শুরুতে নিয়ে আসা
+        // ফাইল পয়েন্টার খোঁজে শুরুতে নিয়ে আসা
         rewind(fptr);
-    }
-	return 0;
-}
 
+        // ফাইল পয়েন্টার-এর অবস্থান প্রিন্ট
+        printf("%ld", ftell(fptr));
+    }
+    return 0;
+}
